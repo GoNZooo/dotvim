@@ -4,6 +4,10 @@ set encoding=utf-8
 " Disable swap files
 set noswapfile
 
+" Set lazy redrawing
+" Works better when scrolling fast
+set lazyredraw
+
 " Tab sizes. I can't stand tabsizes of 8 in the end
 set tabstop=4
 set softtabstop=4
@@ -18,8 +22,7 @@ syntax enable
 
 "set t_Co=256
 set background=dark
-colorscheme seti
-
+colorscheme gonzcolors
 
 " Set search highlighting to all matches
 " in gray (color 8)
@@ -40,11 +43,18 @@ set number
 " Make line numbering relative to current line
 set relativenumber
 
+" Code search with ag (using ack.vim)
+let g:ackprg = 'ag --smart-case'                                                   
+cnoreabbrev ag Ack                                                                           
+cnoreabbrev aG Ack                                                                           
+cnoreabbrev Ag Ack                                                                           
+cnoreabbrev AG Ack  
+
 " Load rainbow parentheses
-au VimEnter * RainbowParenthesesToggle
-au Syntax * RainbowParenthesesLoadRound
-au Syntax * RainbowParenthesesLoadSquare
-au Syntax * RainbowParenthesesLoadBraces
+"au VimEnter * RainbowParenthesesToggle
+"au Syntax * RainbowParenthesesLoadRound
+"au Syntax * RainbowParenthesesLoadSquare
+"au Syntax * RainbowParenthesesLoadBraces
 
 " Set the python path to be visible for powerline, the enable powerline
 let $PYTHONPATH='/usr/lib/python3.5/site-packages' 
@@ -59,17 +69,9 @@ if has("autocmd")
     \ endif
   endif
 
-" Reload .vimrc immediately after writing
-if has("autocmd")
-	autocmd BufWritePost .vimrc source $MYVIMRC
-endif
-
-if has("autocmd")
-    autocmd FileType racket set tabstop=2|set shiftwidth=2|set softtabstop=2|set expandtab
-endif
-
 " Keymaps
-let mapleader="§"
+" Space is the leader key (spacemacs <3)
+let mapleader="\<Space>"
 let maplocalleader="\\"
 
 " Expansions
@@ -91,6 +93,10 @@ map <Leader>et :tabe %%
 map <Leader>ev :vsp %%
 " New window from horizontal split
 map <Leader>es :sp %%
+
+" Ack bind
+map <Leader>/ :Ack 
+map <Leader>* :Ack <c-r>=expand("<cword>")<cr>
 
 " Map tilde (above TAB) to exit insert mode
 imap § <Esc>
