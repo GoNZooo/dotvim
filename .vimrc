@@ -78,7 +78,7 @@ let maplocalleader="\\"
 " See: http://vimcasts.org/episodes/the-edit-command/
 cnoremap %% <C-R>=fnameescape(expand('%:p:h'))."/"<CR>
 " %rc expands to vimrc
-cnoremap %rc ~/code/vim/dotvim/.vimrc
+cnoremap %rc ~/code/tools/dotvim/.vimrc
 
 map <Leader>cd :lcd %:p:h<CR>
 
@@ -92,6 +92,5 @@ map <Leader>ev :vsp %%
 " New window from horizontal split
 map <Leader>es :sp %%
 
-" vim-orgmode settings
-let g:org_agenda_files = ['~/todo/*.org']
-let g:org_todo_keywords = ['TODO', 'WAITING', '|', 'DONE', 'ABANDONED']
+" Map tilde (above TAB) to exit insert mode
+imap § <Esc>
