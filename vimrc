@@ -80,7 +80,7 @@ let maplocalleader="\\"
 " See: http://vimcasts.org/episodes/the-edit-command/
 cnoremap %% <C-R>=fnameescape(expand('%:p:h'))."/"<CR>
 " %rc expands to vimrc
-cnoremap %rc ~/code/tools/dotvim/.vimrc
+cnoremap %rc ~/code/vim/dotvim/vimrc
 
 map <Leader>cd :lcd %:p:h<CR>
 
