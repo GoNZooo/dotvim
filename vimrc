@@ -100,3 +100,11 @@ map <Leader>* :Ack <c-r>=expand("<cword>")<cr>
 
 " Map tilde (above TAB) to exit insert mode
 imap § <Esc>
+
+" Automatic closing of brackets, etc.
+:inoremap ( ()<Esc>:let leavechar=")"<CR>i
+:inoremap [ []<Esc>:let leavechar="]"<CR>i
+:inoremap { {}<Esc>:let leavechar="}"<CR>i
+:inoremap < <><Esc>:let leavechar="}"<CR>i
+:inoremap ' ''<Esc>:let leavechar="'"<CR>i
+:inoremap " ""<Esc>:let leavechar="\""<CR>i
