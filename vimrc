@@ -57,7 +57,7 @@ cnoreabbrev AG Ack
 "au Syntax * RainbowParenthesesLoadBraces
 
 " Set the python path to be visible for powerline, the enable powerline
-let $PYTHONPATH='/usr/lib/python3.5/site-packages' 
+set rtp+=/usr/local/lib/python3.4/dist-packages/powerline/bindings/vim/
 set laststatus=2
 
 " Make it so that we always go to the last position we were at
