@@ -98,8 +98,12 @@ map <Leader>es :sp %%
 map <Leader>/ :Ack 
 map <Leader>* :Ack <c-r>=expand("<cword>")<cr>
 
-" Map tilde (above TAB) to exit insert mode
+" Map tilde (above TAB) to exit insert mode and visual mode
+" For some reason it will actually press enter when trying to exit
+" command line mode with tilde, meaning that if you try to cancel a :wq
+" or the like it will execute it. Need a workaround...
 imap § <Esc>
+vmap § <Esc>
 
 " Automatic closing of brackets, etc.
 :inoremap ( ()<Esc>:let leavechar=")"<CR>i
