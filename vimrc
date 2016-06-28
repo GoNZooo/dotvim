@@ -24,15 +24,15 @@ syntax enable
 set background=dark
 colorscheme gonzcolors
 
+" Set colorcolumn 81
+set colorcolumn=81
+
 " Set search highlighting to all matches
 " in gray (color 8)
 set hlsearch
 highlight Search ctermbg=8
 highlight MatchParen ctermbg=2
 noremap <F4> :set hlsearch! hlsearch?<CR>
-
-" Set colorcolumn 81
-set colorcolumn=81
 
 " Set loading of plugin files and indent files on 
 filetype plugin indent on
@@ -108,3 +108,10 @@ imap § <Esc>
 :inoremap < <><Esc>:let leavechar="}"<CR>i
 :inoremap ' ''<Esc>:let leavechar="'"<CR>i
 :inoremap " ""<Esc>:let leavechar="\""<CR>i
+
+" Use sneak
+let g:sneak#streak = 1
+" <Space><Space> is sneak key (only forwards, backwards still S-s)
+nmap <Leader><Leader> <Plug>Sneak_s
+xmap <Leader><Leader> <Plug>Sneak_s
+omap <Leader><Leader> <Plug>Sneak_s
