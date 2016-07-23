@@ -127,23 +127,12 @@ map <Leader>* :Ack <c-r>=expand("<cword>")<cr>
 imap § <Esc>
 vmap § <Esc>
 
-" Automatic closing of brackets, etc.
-:inoremap ( ()<Esc>:let leavechar=")"<CR>i
-:inoremap [ []<Esc>:let leavechar="]"<CR>i
-:inoremap { {}<Esc>:let leavechar="}"<CR>i
-:inoremap < <><Esc>:let leavechar="}"<CR>i
-:inoremap ' ''<Esc>:let leavechar="'"<CR>i
-:inoremap " ""<Esc>:let leavechar="\""<CR>i
-
 " Use sneak
 let g:sneak#streak = 1
 " <Space><Space> is sneak key (only forwards, backwards still S-s)
 nmap <Leader><Leader> <Plug>Sneak_s
 xmap <Leader><Leader> <Plug>Sneak_s
 omap <Leader><Leader> <Plug>Sneak_s
-
-" Erlang tags
-source ~/.erltags/projects
 
 " Erlang
 let g:ref_use_vimproc = 1
