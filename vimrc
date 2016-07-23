@@ -57,7 +57,7 @@ cnoreabbrev AG Ack
 "au Syntax * RainbowParenthesesLoadBraces
 
 " Set the python path to be visible for powerline, the enable powerline
-set rtp+=/usr/local/lib/python3.4/dist-packages/powerline/bindings/vim/
+set rtp+=/usr/lib/python3.5/site-packages/powerline/bindings/vim/
 set laststatus=2
 
 " Make it so that we always go to the last position we were at
@@ -68,6 +68,28 @@ if has("autocmd")
     \   exe "normal! g`\"" |
     \ endif
   endif
+
+" Ocaml
+let g:ocamlshare = substitute(system('opam config var share'), '\n$', '', '''')
+
+if executable('ocamlmerlin') && has('python')
+    execute "set rtp+=".g:ocamlshare."/merlin/vim"
+endif
+
+let g:ocpindentfile = g:ocamlshare."/ocp-indent/vim/indent/ocaml.vim"
+autocmd FileType ocaml execute "source" . g:ocpindentfile
+
+let g:syntastic_ocaml_checkers = ['merlin']
+
+"Syntastic"
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
 
 " Keymaps
 " Space is the leader key (spacemacs <3)
@@ -119,3 +141,16 @@ let g:sneak#streak = 1
 nmap <Leader><Leader> <Plug>Sneak_s
 xmap <Leader><Leader> <Plug>Sneak_s
 omap <Leader><Leader> <Plug>Sneak_s
+
+" Erlang tags
+source ~/.erltags/projects
+
+" Erlang
+let g:ref_use_vimproc = 1
+let g:ref_open = 'split'
+let g:ref_cache_dir = expand('/tmp/vim_ref_cache/')
+nno <leader>K :<C-u>Unite ref/erlang
+            \ -vertical -default-action=split<CR>
+
+" Elm
+let g:elm_format_autosave = 1
